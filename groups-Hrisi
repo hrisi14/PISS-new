@@ -1,0 +1,53 @@
+{
+  "groups": {
+    "Group3": {
+      "groupName": "Group3",
+      "bookmarks": {
+        "GitHub---hrisi14/Bookmarks-manager:-My-final-project-for-the-Modern-Java-technologies-course-at-FMI,-Sofia-university.": {
+          "title": "GitHub---hrisi14/Bookmarks-manager:-My-final-project-for-the-Modern-Java-technologies-course-at-FMI,-Sofia-university.",
+          "url": "https://github.com/hrisi14/Bookmarks-manager",
+          "keywords": [
+            "github",
+            "code",
+            "star",
+            "commit",
+            "sign",
+            "project",
+            "0",
+            "search",
+            "security",
+            "view",
+            "fork",
+            "reload",
+            "name",
+            "action",
+            "issu"
+          ],
+          "groupName": "Group3"
+        },
+        "GitHub-·-Build-and-ship-software-on-a-single,-collaborative-platform-·-GitHub": {
+          "title": "GitHub-·-Build-and-ship-software-on-a-single,-collaborative-platform-·-GitHub",
+          "url": "https://bit.ly/3UVSmbX",
+          "keywords": [
+            "github",
+            "copilot",
+            "code",
+            "read",
+            "work",
+            "project",
+            "source",
+            "platform",
+            "search",
+            "security",
+            "fix",
+            "build",
+            "developer",
+            "support",
+            "customer"
+          ],
+          "groupName": "Group3"
+        }
+      }
+    }
+  }
+}

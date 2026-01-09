@@ -1,0 +1,31 @@
+{
+  "groups": {
+    "Group1": {
+      "groupName": "Group1",
+      "bookmarks": {
+        "GitHub-·-Build-and-ship-software-on-a-single,-collaborative-platform-·-GitHub": {
+          "title": "GitHub-·-Build-and-ship-software-on-a-single,-collaborative-platform-·-GitHub",
+          "url": "https://bit.ly/3UVSmbX",
+          "keywords": [
+            "github",
+            "copilot",
+            "code",
+            "read",
+            "work",
+            "project",
+            "source",
+            "platform",
+            "search",
+            "security",
+            "fix",
+            "build",
+            "developer",
+            "support",
+            "customer"
+          ],
+          "groupName": "Group1"
+        }
+      }
+    }
+  }
+}

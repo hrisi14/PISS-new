@@ -1,0 +1,31 @@
+{
+  "groups": {
+    "GroupIvana": {
+      "groupName": "GroupIvana",
+      "bookmarks": {
+        "HTTP-Cats": {
+          "title": "HTTP-Cats",
+          "url": "https://http.cat/",
+          "keywords": [
+            "redirect",
+            "request",
+            "bad",
+            "unavailable",
+            "precondition",
+            "requir",
+            "error",
+            "ssl",
+            "timeout",
+            "content",
+            "fail",
+            "proxy",
+            "found",
+            "http",
+            "gateway"
+          ],
+          "groupName": "GroupIvana"
+        }
+      }
+    }
+  }
+}

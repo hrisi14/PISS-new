@@ -1,0 +1,31 @@
+{
+  "groups": {
+    "TestGroup": {
+      "groupName": "TestGroup",
+      "bookmarks": {
+        "Goodreads-|-Meet-your-next-favorite-book": {
+          "title": "Goodreads-|-Meet-your-next-favorite-book",
+          "url": "https://www.goodreads.com/",
+          "keywords": [
+            "love",
+            "discover",
+            "fantasy",
+            "fiction",
+            "like",
+            "will",
+            "reader",
+            "book",
+            "people",
+            "―",
+            "science",
+            "friend",
+            "quot",
+            "favorite",
+            "goodread"
+          ],
+          "groupName": "TestGroup"
+        }
+      }
+    }
+  }
+}
