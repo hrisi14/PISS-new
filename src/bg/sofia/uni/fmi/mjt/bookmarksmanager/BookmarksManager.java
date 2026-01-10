@@ -65,8 +65,10 @@ public class BookmarksManager implements BookmarksManagerAPI {
         String result;
         try {
             result = usersStorage.register(username, password);
+            sendPushNotificationToUserStorage(username, "[success] User registered: " + username);
         } catch (UserAlreadyExistsException e) {
             ExceptionsLogger.logClientException(e);
+            sendPushNotificationToUserStorage(username, "[error] Registration failed: user already exists (" + username + ")");
             return String.format("User with username %s already exists!", username);
         }
         return result;
@@ -85,20 +87,24 @@ public class BookmarksManager implements BookmarksManagerAPI {
                     "must not be null or blank!";
         }
         if (!usersStorage.isARegisteredUser(username)) {
+            sendPushNotificationToUserStorage(username, "[error] Login failed: no such user (" + username + ")");
             throw new NoSuchUserException("There is no" +
                     " registered user with username " + username);
         }
 
         if (loggedInUsers.containsKey(clientChannel)) {
+            sendPushNotificationToUserStorage(username, "[info] User already logged in: " + username);
             return String.format("User with username %s has already logged in!", username);
         }
 
         if (!usersStorage.getUsers().get(username).validatePassword(password)) {
+            sendPushNotificationToUserStorage(username, "[error] Login failed: invalid password for " + username);
             throw new InvalidCredentialsException("Incorrect password" +
                     " entered when logging!");
         }
         User loggedInUser = usersStorage.getUsers().get(username);
         loggedInUsers.put(clientChannel, loggedInUser);
+        sendPushNotificationToUserStorage(username, "[success] User logged in: " + username);
         return String.format("User with name %s has successfully logged in.", username);
     }
 
@@ -197,8 +203,12 @@ public class BookmarksManager implements BookmarksManagerAPI {
             throw new UserNotLoggedInException("User with socket channel "
                     + clientChannel.toString() + "has not logged in!");
         }
-        return finder.searchBookmarksByUser(loggedInUsers.get(clientChannel).getUsername(), usersStorage);
+        List<Bookmark> result = finder.searchBookmarksByUser(loggedInUsers.
+                get(clientChannel).getUsername(), usersStorage);
 
+        sendPushNotificationToUserStorage(loggedInUsers.get(clientChannel).getUsername(),
+                "[info] Listed all bookmarks for user: " + loggedInUsers.get(clientChannel).getUsername());
+        return result;
     }
 
     @Override
@@ -207,8 +217,12 @@ public class BookmarksManager implements BookmarksManagerAPI {
             throw new UserNotLoggedInException("User with socket channel "
                     + clientChannel.toString() + "has not logged in!");
         }
-        return finder.searchBookmarksByGroup(groupName,
-                loggedInUsers.get(clientChannel).getUsername(), usersStorage);
+
+        List<Bookmark> result = finder.searchBookmarksByGroup(groupName, loggedInUsers.
+                get(clientChannel).getUsername(), usersStorage);
+        sendPushNotificationToUserStorage(loggedInUsers.get(clientChannel).getUsername(),
+                "[info] Listed bookmarks for group: " + groupName + " (user: " + loggedInUsers.get(clientChannel).getUsername() + ")");
+        return result;
     }
 
     @Override
@@ -218,8 +232,12 @@ public class BookmarksManager implements BookmarksManagerAPI {
                     + clientChannel.toString() + "has not logged in!");
         }
 
-        return finder.searchBookmarksByTags(loggedInUsers.get(clientChannel).getUsername(),
-                keywords, usersStorage);
+        List<Bookmark> result = finder.searchBookmarksByTags(loggedInUsers.
+                get(clientChannel).getUsername(), keywords, usersStorage);
+
+        sendPushNotificationToUserStorage(loggedInUsers.get(clientChannel).getUsername(),
+                "[info] Searched bookmarks by tags for user: " + loggedInUsers.get(clientChannel).getUsername());
+        return result;
 
     }
 
@@ -230,8 +248,11 @@ public class BookmarksManager implements BookmarksManagerAPI {
                    + clientChannel.toString() + "has not logged in!");
         }
 
-        return finder.searchBookmarksByTitle(loggedInUsers.get(clientChannel).getUsername(),
-                 title, usersStorage);
+        List<Bookmark> result = finder.searchBookmarksByTitle(loggedInUsers.
+                get(clientChannel).getUsername(), title, usersStorage);
+        sendPushNotificationToUserStorage(loggedInUsers.get(clientChannel).getUsername(),
+                "[info] Searched bookmarks by title for user: " + loggedInUsers.get(clientChannel).getUsername());
+        return result;
     }
 
     @Override
@@ -248,6 +269,7 @@ public class BookmarksManager implements BookmarksManagerAPI {
         if (loggedInUsers.containsKey(clientChannel)) {
             User disconnectedUser = loggedInUsers.get(clientChannel);
             disconnectedUser.getStorage().updateGroupsFile();
+            sendPushNotificationToUserStorage(disconnectedUser.getUsername(), "[info] User disconnected: " + disconnectedUser.getUsername());
             loggedInUsers.remove(clientChannel);
         }
         usersStorage.saveUsers();
@@ -275,6 +297,15 @@ public class BookmarksManager implements BookmarksManagerAPI {
 
     private void invalidateFinder(String username) {
         finder.invalidateUserCache(username);
+    }
+    private void sendPushNotificationToUserStorage(String username, String message) {
+        if (username == null || !usersStorage.isARegisteredUser(username)) {
+            return;
+        }
+        User user = usersStorage.getUsers().get(username);
+        if (user != null && user.getStorage() != null) {
+            user.getStorage().sendPushNotification(message);
+        }
     }
 
 }
