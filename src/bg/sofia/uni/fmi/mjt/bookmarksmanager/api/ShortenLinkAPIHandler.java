@@ -11,8 +11,9 @@ import java.net.http.HttpResponse;
 import java.util.Map;
 
 public class ShortenLinkAPIHandler {
-    private static final String BITLY_API_KEY = System.getenv("BITLY_API_KEY");
-    //"d641308354e1aeb944d96221e14288bef3a83072";
+    private static final String BITLY_API_KEY = "1c40581b998b049b62d4289f3149081fa4fc4f02";
+    //System.getenv("BITLY_API_KEY");
+    //"1c40581b998b049b62d4289f3149081fa4fc4f02";
 
     private static final String API_REQUEST_URI = "https://api-ssl.bitly.com/v4/shorten";
     private static final String AUTHORIZATION_HEADER_NAME = "Authorization";

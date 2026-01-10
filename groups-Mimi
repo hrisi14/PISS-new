@@ -1,0 +1,57 @@
+{
+  "groups": {
+    "Group2": {
+      "groupName": "Group2",
+      "bookmarks": {}
+    },
+    "MyGroup": {
+      "groupName": "MyGroup",
+      "bookmarks": {
+        "Goodreads-|-Meet-your-next-favorite-book": {
+          "title": "Goodreads-|-Meet-your-next-favorite-book",
+          "url": "https://www.goodreads.com/",
+          "keywords": [
+            "love",
+            "discover",
+            "like",
+            "fiction",
+            "will",
+            "reader",
+            "book",
+            "best",
+            "people",
+            "mystery",
+            "―",
+            "friend",
+            "quot",
+            "favorite",
+            "goodread"
+          ],
+          "groupName": "MyGroup"
+        },
+        "GitHub-·-Change-is-constant.-GitHub-keeps-you-ahead.-·-GitHub": {
+          "title": "GitHub-·-Change-is-constant.-GitHub-keeps-you-ahead.-·-GitHub",
+          "url": "https://github.com/",
+          "keywords": [
+            "github",
+            "copilot",
+            "code",
+            "explore",
+            "featur",
+            "ai",
+            "source",
+            "tool",
+            "security",
+            "search",
+            "view",
+            "fix",
+            "developer",
+            "support",
+            "customer"
+          ],
+          "groupName": "MyGroup"
+        }
+      }
+    }
+  }
+}
